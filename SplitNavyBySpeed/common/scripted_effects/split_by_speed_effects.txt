@@ -1,0 +1,31 @@
+# split_fleet_by_speed = {
+
+# 	effects = {
+# 		btn_split_by_speed_click = {
+# 			if = {
+# 				limit = { NOT = { has_global_flag = split_by_speed_enabled } }
+# 				set_global_flag = split_by_speed_enabled
+
+# 			}
+# 			else = {
+# 				clr_global_flag = split_by_speed_enabled
+# 			}
+# 		}
+# 		ROOT = { 
+# 			set_variable = { speed_threshold = PLACEHOLDER_SPD }
+# 		}
+# 		for_each_ship = {
+# 			value = ship
+# 			index = idx
+# 			if = {
+# 			  limit = { ship.speed < temp:threshold }
+# 			  remove_ship = { id = ship.id }
+# 			}
+# 		  }
+# 	}
+# 	triggers = {
+# 		btn_split_by_speed_click_enabled = {
+# 			always = yes
+# 		}
+# 	}
+# }

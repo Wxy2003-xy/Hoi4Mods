@@ -1,0 +1,78 @@
+scripted_gui = {
+
+	split_by_speed_open = {
+
+		context_type = player_context
+
+		window_name = "speed_panel"
+
+		visible = {
+			NOT = { has_global_flag = hidden_switch }
+		}
+		
+		effects = {
+			btn_split_by_speed_click = {
+				if = {
+					limit = { NOT = { has_global_flag = split_by_speed_enabled } }
+					set_global_flag = split_by_speed_enabled
+				}
+				else = {
+					clr_global_flag = split_by_speed_enabled
+				}
+			}
+
+			ROOT = { 
+				set_variable = { speed_threshold = PLACEHOLDER_SPD }
+			}
+
+			inc_spped_click = {
+				if = {
+					limit = { NOT = { has_global_flag = split_by_speed_enabled } }
+					add_to_variable = {
+						ROOT.speed_threshold = 0.5
+					}
+				}
+				else = {
+					
+				}
+			}
+
+			dec_spped_click = {
+				if = {
+					limit = { NOT = { has_global_flag = split_by_speed_enabled } }
+					subtract_from_variable = {
+						ROOT.speed_threshold = 0.5
+					}
+				}
+				else = {
+					
+				}
+			}
+
+			apply_split_click = {
+				if = {
+					limit = { NOT = { has_global_flag = split_by_speed_enabled } }
+					clr_global_flag = split_by_speed_enabled
+					######### PSEUDO CODE ###########
+					# for_each_ship = {
+					# 	value = ship    # temp var holding the ship’s ID
+					# 	index = idx     # (optional) loop counter
+					
+					# 	limit       = { speed < temp:threshold }
+					# 	remove_ship = { id = ship }
+					# }
+					######### PSEUDO CODE ###########
+					add_political_power = 100
+				}
+				else = {
+					
+				}
+			}
+		}
+		triggers = {
+			btn_split_by_speed_click_enabled = {
+				always = yes
+			}
+		}
+	}
+}
