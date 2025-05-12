@@ -1,78 +1,60 @@
 scripted_gui = {
 
-	split_by_speed_open = {
+	speed_threshold_gui = {
+	  context_type = player_context 
+	  window_name = "set_speed_threshold_window"
+  
+	  visible = {
+		has_global_flag = split_by_speed_enabled
+	  }
+  
+	  effects = {
+		btn_split_by_speed_click = {
+		add_political_power = 999
 
-		context_type = player_context
+		  log               = ">>> Debug: Init speed_threshold now [ROOT.speed_threshold]"
 
-		window_name = "speed_panel"
-
-		visible = {
-			NOT = { has_global_flag = hidden_switch }
+		  if = {
+			limit = { NOT = { has_global_flag = split_by_speed_enabled } }
+			set_global_flag = split_by_speed_enabled
+		  }
+		  else = {
+			clr_global_flag = split_by_speed_enabled
+		  }
 		}
-		
-		effects = {
-			btn_split_by_speed_click = {
-				if = {
-					limit = { NOT = { has_global_flag = split_by_speed_enabled } }
-					set_global_flag = split_by_speed_enabled
-				}
-				else = {
-					clr_global_flag = split_by_speed_enabled
-				}
-			}
-
-			ROOT = { 
-				set_variable = { speed_threshold = PLACEHOLDER_SPD }
-			}
-
-			inc_spped_click = {
-				if = {
-					limit = { NOT = { has_global_flag = split_by_speed_enabled } }
-					add_to_variable = {
-						ROOT.speed_threshold = 0.5
-					}
-				}
-				else = {
-					
-				}
-			}
-
-			dec_spped_click = {
-				if = {
-					limit = { NOT = { has_global_flag = split_by_speed_enabled } }
-					subtract_from_variable = {
-						ROOT.speed_threshold = 0.5
-					}
-				}
-				else = {
-					
-				}
-			}
-
-			apply_split_click = {
-				if = {
-					limit = { NOT = { has_global_flag = split_by_speed_enabled } }
-					clr_global_flag = split_by_speed_enabled
-					######### PSEUDO CODE ###########
-					# for_each_ship = {
-					# 	value = ship    # temp var holding the ship’s ID
-					# 	index = idx     # (optional) loop counter
-					
-					# 	limit       = { speed < temp:threshold }
-					# 	remove_ship = { id = ship }
-					# }
-					######### PSEUDO CODE ###########
-					add_political_power = 100
-				}
-				else = {
-					
-				}
-			}
+  
+		inc_speed_click = {
+		  add_to_variable = { ROOT.speed_threshold = 1.0 }
+		  log               = ">>> Debug: speed_threshold now [ROOT.speed_threshold]"
 		}
-		triggers = {
-			btn_split_by_speed_click_enabled = {
-				always = yes
-			}
+  
+		dec_speed_click = {
+		  subtract_from_variable = { ROOT.speed_threshold = 1.0 }
+		  log                     = ">>> Debug: speed_threshold now [ROOT.speed_threshold]"
 		}
+  
+		apply_split_click = {
+		  add_political_power = 100
+		#   custom_split_by_speed = yes
+		  clr_global_flag       = split_by_speed_enabled
+		}
+	  }
+  
+	  triggers = {
+		btn_split_by_speed_click_enabled = {
+		  always = yes
+		}
+		inc_speed_click_enabled = {
+		  check_variable = { ROOT.speed_threshold < 100.0 }
+		}
+		dec_speed_click_enabled = {
+		  check_variable = { ROOT.speed_threshold > 0.0 }
+		}
+		apply_split_click_enabled = {
+			always = yes
+		}
+	  }
 	}
-}
+  
+  }
+  

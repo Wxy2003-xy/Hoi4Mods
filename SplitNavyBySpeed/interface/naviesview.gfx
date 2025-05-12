@@ -418,8 +418,8 @@ spriteTypes = {
 # new button
 	spriteType = {
 		name = "GFX_NV_btn_split_by_speed"
-		texturefile = "gfx/interface/naviesview/btn_repair_now.dds"
-		noOfFrames = 3
+		texturefile = "gfx/interface/naviesview/split_by_speed.dds"
+		noOfFrames = 1
 	}
 	spriteType = {
 		name = "GFX_NV_btn_refit_ship"

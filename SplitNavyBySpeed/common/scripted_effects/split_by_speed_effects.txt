@@ -1,31 +1,32 @@
-# split_fleet_by_speed = {
-
-# 	effects = {
-# 		btn_split_by_speed_click = {
-# 			if = {
-# 				limit = { NOT = { has_global_flag = split_by_speed_enabled } }
-# 				set_global_flag = split_by_speed_enabled
-
-# 			}
-# 			else = {
-# 				clr_global_flag = split_by_speed_enabled
-# 			}
-# 		}
-# 		ROOT = { 
-# 			set_variable = { speed_threshold = PLACEHOLDER_SPD }
-# 		}
-# 		for_each_ship = {
-# 			value = ship
-# 			index = idx
-# 			if = {
-# 			  limit = { ship.speed < temp:threshold }
-# 			  remove_ship = { id = ship.id }
-# 			}
-# 		  }
-# 	}
-# 	triggers = {
-# 		btn_split_by_speed_click_enabled = {
-# 			always = yes
-# 		}
-# 	}
-# }
+custom_split_by_speed = {
+	add_political_power = 100
+	# set_temp_variable = { 
+	# 	name = threshold 
+	# 	value = var:speed_threshold 
+	# }
+  
+	# create_fleet = { size = 0 creator = ROOT }
+	# set_variable    = { name = slow_fleet_id value = last_created_fleet_id }
+	# create_fleet = { size = 0 creator = ROOT }
+	# set_variable    = { name = fast_fleet_id value = last_created_fleet_id }
+  
+	# # move slow ships into fleet A
+	# for_each_ship = {
+	#   value = ship
+	#   index = idx
+	#   limit = { speed < temp:threshold }
+	#   remove_ship = { id = ship }
+	#   add_ship    = { fleet = var:slow_fleet_id ship = ship }
+	# }
+  
+	# # move remaining ships into fleet B
+	# for_each_ship = {
+	#   value = ship
+	#   remove_ship = { id = ship }
+	#   add_ship    = { fleet = var:fast_fleet_id ship = ship }
+	# }
+  
+	# # send slow fleet to reserve
+	# set_fleet_to_reserve = { fleet = var:slow_fleet_id }
+}
+  

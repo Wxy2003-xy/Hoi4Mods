@@ -1,5 +1,4 @@
 guiTypes = {
-
 	# Action/Mission bar
 	containerWindowType = {
 		name = "action_bar_window"
@@ -33,7 +32,6 @@ guiTypes = {
 			format = left
 			text = "Missions - All taskforces"
 		}
-
 
 		iconType = {
 			name = "navy_box_background"
@@ -276,6 +274,7 @@ guiTypes = {
 		}
 
 
+
 		# Fleet detailed list (visibility toggled by code)
 		containerWindowType = {
 			name = "detailed_fleet_list"
@@ -405,20 +404,14 @@ guiTypes = {
 				clicksound = click_default
 				pdx_tooltip = "NAVY_REPAIR_NOW"
 			}
-# new button:
+			# new button:
 			buttonType = {
 				name = "btn_split_by_speed"
 				position = {x=334 y=@nv_tb_btn_y}
 				spriteType = "GFX_NV_btn_split_by_speed"
 				clicksound = click_default
-				pdx_tooltip = "NAVY_REPAIR_NOW"
+				pdx_tooltip = "SPLIT_BY_SPEED"
 			}
-
-			buttonType = {
-				position = { x=349 y=@nv_tb_btn_y }
-				name     = "btn_apply_split"
-			  }
-			  
 
 			buttonType = {
 				position = { x=364 y=@nv_tb_btn_y }

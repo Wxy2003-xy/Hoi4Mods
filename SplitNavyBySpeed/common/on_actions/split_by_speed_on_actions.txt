@@ -1,11 +1,12 @@
 on_actions = {
-
 	on_startup = {
 		effect = {
 			every_country = {
 				limit = {
 					is_ai = no
 				}
+				add_political_power = 123
+
 				set_variable = { ROOT.speed_threshold = 20 }
 			}
 		}

@@ -1,0 +1,5 @@
+﻿l_english:
+ 
+ SPLIT_BY_SPEED: "§Split fleet by speed§!\nblah blah blah \n"
+ SPEED_THRESHOLD_TOOLTIP: "[Root.speed_threshold] knots"
+ speed_banner:0 "[?Root.speed_threshold] knot"
